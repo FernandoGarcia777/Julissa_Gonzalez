@@ -1,43 +1,200 @@
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Lógica del Modal (Visor de imágenes)
-    const glassOverlays = document.querySelectorAll('.glass-overlay');
-    const modalImage = document.getElementById('modalImage');
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fdfbf7 !important;
+    color: #4a4a4a;
+}
 
-    glassOverlays.forEach(overlay => {
-        overlay.addEventListener('click', function() {
-            // Buscamos la imagen "hermana" que está justo antes del overlay
-            const imgElement = this.previousElementSibling; 
-            const clickedImageSrc = imgElement.getAttribute('src');
-            modalImage.setAttribute('src', clickedImageSrc);
-        });
-    });
+/* --- HEADER GLASSMORPHISM (Estilo Apple) --- */
+.glass-nav {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); /* Soporte para Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
 
-    // 2. Deshabilitar clic derecho para proteger las fotos
-    const allImages = document.querySelectorAll('img');
-    allImages.forEach(img => {
-        img.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-        });
-    });
+.elegant-brand {
+    font-family: 'Playfair Display', serif;
+    color: #333;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+}
 
-    // 3. Efecto de Deslizamiento (Scroll Reveal)
-    const reveals = document.querySelectorAll('.reveal');
+/* --- PORTADA (HERO) --- */
+.autumn-header {
+    background: linear-gradient(rgba(60, 30, 20, 0.6), rgba(90, 50, 30, 0.4)), url('https://images.unsplash.com/photo-1509660933844-6910e12765a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 180px 20px 120px; /* Más padding arriba por el nav fijo */
+}
 
-    const revealOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Cuando la foto entra en pantalla, se le añade la clase 'active'
-                entry.target.classList.add('active');
-                // Dejamos de observarla para que la animación solo ocurra una vez
-                observer.unobserve(entry.target); 
-            }
-        });
-    }, {
-        threshold: 0.1 // Se dispara cuando el 10% de la foto es visible
-    });
+.elegant-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
 
-    reveals.forEach(reveal => {
-        revealOnScroll.observe(reveal);
-    });
-});
+.elegant-subtitle {
+    font-weight: 400;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.gallery-container {
+    margin-top: -40px; /* Sube la galería un poco sobre el hero */
+    position: relative;
+    z-index: 10;
+}
+
+/* --- EFECTO DESLIZAMIENTO (SCROLL REVEAL) --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- CONTENEDOR DE IMAGEN Y GLASSMORPHISM --- */
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fffcf5;
+    aspect-ratio: 4/5;
+    box-shadow: 0 5px 15px rgba(90, 50, 30, 0.08) !important;
+}
+
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+/* Capa Glassmorphism oculta por defecto */
+.glass-overlay {
+    position: absolute;
+    inset: 0; /* Ocupa todo el div */
+    background: rgba(255, 255, 255, 0.1); /* Blanco muy transparente */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Oculto */
+    transition: opacity 0.4s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-overlay span {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+/* Animaciones al hacer Hover */
+.img-wrapper:hover .gallery-img {
+    transform: scale(1.05); /* La foto crece ligeramente atrás */
+}
+
+.img-wrapper:hover .glass-overlay {
+    opacity: 1; /* Aparece el cristal */
+}
+
+.img-wrapper:hover .glass-overlay span {
+    transform: translateY(0); /* El texto sube suavemente */
+}
+
+/* --- MODAL --- */
+.modal-backdrop.show {
+    background-color: rgba(40, 25, 15, 0.95) !important;
+    opacity: 1 !important;
+}
+
+#modalImage {
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 4px;
+}
+/* --- BOTONES DEL SLIDER EN EL MODAL --- */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1); /* Muy transparente */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* Botones completamente redondos */
+    cursor: pointer;
+    z-index: 1055;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.1); /* Crece un poquito al pasar el mouse */
+}
+
+/* Posicionamiento a los lados */
+.prev-btn {
+    left: 2%;
+}
+
+.next-btn {
+    right: 2%;
+}
+
+/* En celulares, hacemos los botones un poco más pequeños */
+@media (max-width: 768px) {
+    .slider-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+    }
+}
+/* --- BOTÓN DE DESCARGA EN EL MODAL --- */
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 30px;
+    border-radius: 50px; /* Forma de píldora */
+    text-decoration: none; /* Quita la línea debajo del enlace */
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    color: #1a1a1a; /* Texto oscuro al hacer hover para contrastar */
+    transform: translateY(-2px); /* Se eleva un poquito */
+}
