@@ -2,10 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 1. BASE DE DATOS (Fotos + Texto de la principal)
     const imageList = [
-        /Fotos/Foto-(1).jpeg
-        /Fotos/Foto-(2).jpeg
-        /Fotos/Foto-(3).jpeg
-        /Fotos/Foto-(4).jpeg
+        "./Fotos/Foto-(1).jpeg",
+        "./Fotos/Foto-(2).jpeg",
+        "./Fotos/Foto-(3).jpeg",
+        "./Fotos/Foto-(4).jpeg",
         /Fotos/Foto-(5).jpeg
         /Fotos/Foto-(6).jpeg
         /Fotos/Foto-(7).jpeg
@@ -134,3 +134,4 @@ document.addEventListener('DOMContentLoaded', () => {
     reveals.forEach(reveal => revealOnScroll.observe(reveal));
 
 });
+
