@@ -173,28 +173,4 @@ body {
         font-size: 1.5rem;
     }
 }
-/* --- BOTÓN DE DESCARGA EN EL MODAL --- */
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 12px 30px;
-    border-radius: 50px; /* Forma de píldora */
-    text-decoration: none; /* Quita la línea debajo del enlace */
-    font-size: 0.95rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
 
-.download-btn:hover {
-    background: rgba(255, 255, 255, 0.8);
-    color: #1a1a1a; /* Texto oscuro al hacer hover para contrastar */
-    transform: translateY(-2px); /* Se eleva un poquito */
-}
