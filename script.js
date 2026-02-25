@@ -1,19 +1,65 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Lógica del Modal (Visor de imágenes)
+    // --- 1. ELEMENTOS DEL DOM ---
     const glassOverlays = document.querySelectorAll('.glass-overlay');
     const modalImage = document.getElementById('modalImage');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const downloadBtn = document.getElementById('downloadBtn');
+    
+    // Convertimos las imágenes a un array para el slider
+    const allGalleryImages = Array.from(document.querySelectorAll('.gallery-img'));
+    let currentImageIndex = 0; 
 
-    glassOverlays.forEach(overlay => {
+    // --- 2. FUNCIÓN PARA ACTUALIZAR EL MODAL Y DESCARGA ---
+    function actualizarImagenModal() {
+        const nuevaImagenSrc = allGalleryImages[currentImageIndex].getAttribute('src');
+        
+        // Actualiza la foto
+        modalImage.setAttribute('src', nuevaImagenSrc);
+        
+        // Actualiza el botón de descarga
+        if(downloadBtn) {
+            downloadBtn.setAttribute('href', nuevaImagenSrc);
+            downloadBtn.setAttribute('download', `Julissa_Gonzalez_Foto_${currentImageIndex + 1}.jpg`);
+        }
+    }
+
+    // --- 3. ABRIR FOTO AL HACER CLIC ---
+    glassOverlays.forEach((overlay, index) => {
         overlay.addEventListener('click', function() {
-            // Buscamos la imagen "hermana" que está justo antes del overlay
-            const imgElement = this.previousElementSibling; 
-            const clickedImageSrc = imgElement.getAttribute('src');
-            modalImage.setAttribute('src', clickedImageSrc);
+            currentImageIndex = index;
+            actualizarImagenModal();
         });
     });
 
-    // 2. Deshabilitar clic derecho para proteger las fotos
+    // --- 4. CONTROLES DEL SLIDER (BOTONES) ---
+    if(nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % allGalleryImages.length;
+            actualizarImagenModal();
+        });
+    }
+
+    if(prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + allGalleryImages.length) % allGalleryImages.length;
+            actualizarImagenModal();
+        });
+    }
+
+    // --- 5. NAVEGACIÓN CON TECLADO ---
+    document.addEventListener('keydown', (e) => {
+        if (modalImage && modalImage.getAttribute('src') !== "") {
+            if (e.key === 'ArrowRight' && nextBtn) {
+                nextBtn.click();
+            } else if (e.key === 'ArrowLeft' && prevBtn) {
+                prevBtn.click();
+            }
+        }
+    });
+
+    // --- 6. PROTEGER FOTOS (DESHABILITAR CLIC DERECHO) ---
     const allImages = document.querySelectorAll('img');
     allImages.forEach(img => {
         img.addEventListener('contextmenu', (e) => {
@@ -21,20 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Efecto de Deslizamiento (Scroll Reveal)
+    // --- 7. EFECTO DE DESLIZAMIENTO (SCROLL REVEAL) ---
     const reveals = document.querySelectorAll('.reveal');
-
     const revealOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Cuando la foto entra en pantalla, se le añade la clase 'active'
-                entry.target.classList.add('active');
-                // Dejamos de observarla para que la animación solo ocurra una vez
+                entry.target.classList.add('active'); // Aquí es donde las hace visibles
                 observer.unobserve(entry.target); 
             }
         });
     }, {
-        threshold: 0.1 // Se dispara cuando el 10% de la foto es visible
+        threshold: 0.1
     });
 
     reveals.forEach(reveal => {
