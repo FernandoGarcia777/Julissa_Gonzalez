@@ -1,0 +1,50 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fbfbfb !important; /* Blanco muy sutil */
+}
+
+/* Tipografía de la portada */
+.elegant-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+}
+
+.elegant-subtitle {
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+/* Contenedor de la imagen para controlar el recorte y la animación */
+.img-wrapper {
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: #fff;
+    aspect-ratio: 4/5; /* Mantiene proporción de retrato */
+}
+
+/* Estilo y animación de las fotos */
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in; /* Indica que se puede hacer clic para agrandar */
+    transition: transform 0.5s ease;
+}
+
+.gallery-img:hover {
+    transform: scale(1.04);
+}
+
+/* Estilos extra para el visor (Modal) oscuro */
+.modal-backdrop.show {
+    opacity: 0.9; /* Fondo más oscuro para que resalte la foto */
+}
+
+#modalImage {
+    max-height: 90vh; /* Evita que la foto se salga de la pantalla verticalmente */
+    object-fit: contain;
+}
