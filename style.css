@@ -1,14 +1,16 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #fdfbf7 !important;
-    color: #4a4a4a;
+    /* El clásico color de fondo de Apple: un gris extra claro y limpio */
+    background-color: #f5f5f7 !important; 
+    color: #1d1d1f;
 }
 
-/* --- HEADER GLASSMORPHISM (Estilo Apple) --- */
+/* --- HEADER GLASSMORPHISM (Estilo Apple Avanzado) --- */
 .glass-nav {
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px); /* Soporte para Safari */
+    background: rgba(255, 255, 255, 0.6);
+    /* Saturate hace que los colores detrás del cristal se vean más vivos, muy Apple */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding: 15px 0;
     transition: all 0.3s ease;
@@ -16,185 +18,308 @@ body {
 
 .elegant-brand {
     font-family: 'Playfair Display', serif;
-    color: #333;
-    letter-spacing: 2px;
+    color: #1d1d1f;
+    letter-spacing: 1px;
     font-size: 1.2rem;
+    font-weight: 600;
 }
 
 /* --- PORTADA (HERO) --- */
 .autumn-header {
-    background: linear-gradient(rgba(60, 30, 20, 0.6), rgba(90, 50, 30, 0.4)), url('https://images.unsplash.com/photo-1509660933844-6910e12765a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+    background: linear-gradient(rgba(29, 29, 31, 0.7), rgba(29, 29, 31, 0.5)), url('https://images.unsplash.com/photo-1509660933844-6910e12765a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    padding: 180px 20px 120px; /* Más padding arriba por el nav fijo */
+    padding: 200px 20px 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animación de entrada fluida */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .elegant-title {
     font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    font-size: 4.5rem;
+    letter-spacing: 1px;
+    /* Efecto de texto con degradado premium metálico/blanco */
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #b8b8b8 100%);
+-webkit-background-clip: text;
+background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #b8b8b8 100%);
+    -webkit-background-clip: text; /* Para Safari, Chrome y Edge */
+    background-clip: text; /* La propiedad estándar obligatoria para que el editor no marque error */
+    -webkit-text-fill-color: transparent; /* Vuelve la letra transparente para ver el fondo */
+    -webkit-text-fill-color: transparent;
+    opacity: 0; /* Inicia oculto para la animación */
+    animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.2s; /* Pequeño retraso para que se vea intencional */
 }
 
 .elegant-subtitle {
-    font-weight: 400;
-    letter-spacing: 4px;
+    font-weight: 300;
+    letter-spacing: 5px;
     text-transform: uppercase;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8) !important;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    animation-delay: 0.5s; /* Entra después del título principal */
 }
 
 .gallery-container {
-    margin-top: -40px; /* Sube la galería un poco sobre el hero */
+    margin-top: -60px; /* Sube un poco más para romper la línea del hero */
     position: relative;
     z-index: 10;
 }
 
-/* --- EFECTO DESLIZAMIENTO (SCROLL REVEAL) --- */
+/* --- EFECTO DESLIZAMIENTO --- */
 .reveal {
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    transform: translateY(40px) scale(0.98); /* Ligero efecto de escala */
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); /* Curva de animación más suave */
 }
 
 .reveal.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
 }
 
 /* --- CONTENEDOR DE IMAGEN Y GLASSMORPHISM --- */
 .img-wrapper {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
-    background-color: #fffcf5;
+    border-radius: 16px; /* Bordes más redondeados estilo iOS */
+    background-color: #ffffff;
     aspect-ratio: 4/5;
-    box-shadow: 0 5px 15px rgba(90, 50, 30, 0.08) !important;
+    /* Sombra difusa y profunda, típica del diseño de Apple */
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.img-wrapper:hover {
+    transform: translateY(-5px); /* Se eleva toda la tarjeta */
+    box-shadow: 0 30px 50px -15px rgba(0, 0, 0, 0.15) !important;
 }
 
 .gallery-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Capa Glassmorphism oculta por defecto */
 .glass-overlay {
     position: absolute;
-    inset: 0; /* Ocupa todo el div */
-    background: rgba(255, 255, 255, 0.1); /* Blanco muy transparente */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    inset: 0;
+    background: rgba(29, 29, 31, 0.2); /* Oscurece un poco en lugar de blanquear */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0; /* Oculto */
-    transition: opacity 0.4s ease;
+    opacity: 0;
+    transition: opacity 0.5s ease;
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .glass-overlay span {
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    letter-spacing: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #1d1d1f;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 12px 24px;
+    border-radius: 30px; /* Botón en forma de píldora */
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
-    transform: translateY(20px);
-    transition: transform 0.4s ease;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Animaciones al hacer Hover */
 .img-wrapper:hover .gallery-img {
-    transform: scale(1.05); /* La foto crece ligeramente atrás */
+    transform: scale(1.08);
 }
 
 .img-wrapper:hover .glass-overlay {
-    opacity: 1; /* Aparece el cristal */
+    opacity: 1;
 }
 
 .img-wrapper:hover .glass-overlay span {
-    transform: translateY(0); /* El texto sube suavemente */
+    transform: translateY(0) scale(1);
 }
 
 /* --- MODAL --- */
 .modal-backdrop.show {
-    background-color: rgba(40, 25, 15, 0.95) !important;
+    background-color: rgba(29, 29, 31, 0.9) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     opacity: 1 !important;
 }
 
 #modalImage {
     max-height: 85vh;
     object-fit: contain;
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
 }
-/* --- BOTONES DEL SLIDER EN EL MODAL --- */
+
+/* El resto de tu CSS para los botones del modal y el de descarga se mantiene igual */
+/* --- AJUSTES DE LA CUADRÍCULA (Grid) --- */
+/* En pantallas muy grandes (Apple Pro Display, iMacs), permitimos 4 columnas. 
+   En laptops normales (lg) mantenemos 3 o 4 según prefieras. Aquí fuerzo 4 en 'lg' */
+@media (min-width: 992px) {
+    .col-lg-3 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+}
+
+/* --- ESTILOS DE LA SECCIÓN DESTACADA (Feature Section) --- */
+
+/* Contenedor del texto al lado de la foto principal */
+.feature-text-container {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente */
+    height: 100%;
+}
+
+.feature-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-bottom: 1.5rem;
+    /* Un subrayado sutil y elegante */
+    position: relative;
+}
+
+.feature-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #b8b8b8, transparent); /* Degradado metálico sutil */
+}
+
+.feature-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #6e6e73; /* El gris clásico de texto secundario de Apple */
+    font-weight: 400;
+}
+
+/* Un wrapper especial para la imagen destacada, quizás un poco más grande */
+.feature-img-wrapper.img-wrapper {
+     /* Sombra un poco más pronunciada para la imagen principal */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+    /* Opcional: si quieres que la primera foto sea más apaisada (landscape) */
+    /* aspect-ratio: 16/9; */ 
+}
+/* =========================================
+   ESTILOS DEL MODAL Y BOTONES (ESTILO APPLE)
+   ========================================= */
+
+/* --- BOTONES DEL SLIDER (Flechas) --- */
 .slider-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1); /* Muy transparente */
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* Efecto cristal (Glassmorphism) */
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-size: 2rem;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%; /* Botones completamente redondos */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 1.5rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%; /* Perfectamente redondos */
     cursor: pointer;
     z-index: 1055;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .slider-btn:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: translateY(-50%) scale(1.1); /* Crece un poquito al pasar el mouse */
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-50%) scale(1.08); /* Crece un poco suavemente */
+    border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-/* Posicionamiento a los lados */
 .prev-btn {
-    left: 2%;
+    left: 4%;
 }
 
 .next-btn {
-    right: 2%;
+    right: 4%;
 }
 
-/* En celulares, hacemos los botones un poco más pequeños */
+/* Ajuste para celulares (botones más pequeños) */
 @media (max-width: 768px) {
     .slider-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.5rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
     }
+    .prev-btn { left: 2%; }
+    .next-btn { right: 2%; }
 }
-/* --- BOTÓN DE DESCARGA EN EL MODAL --- */
+
+/* --- BOTÓN DE DESCARGA --- */
 .download-btn {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    /* Efecto cristal oscuro elegante */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    padding: 12px 30px;
-    border-radius: 50px; /* Forma de píldora */
-    text-decoration: none; /* Quita la línea debajo del enlace */
-    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 14px 32px;
+    border-radius: 40px; /* Forma de píldora */
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+/* Efecto Inverso al pasar el mouse (Estilo muy común en iOS) */
 .download-btn:hover {
-    background: rgba(255, 255, 255, 0.8);
-    color: #1a1a1a; /* Texto oscuro al hacer hover para contrastar */
-    transform: translateY(-2px); /* Se eleva un poquito */
+    background: #ffffff;
+    color: #1d1d1f; /* Letra oscura */
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.2);
+}
+
+/* Ajuste del botón de cerrar nativo de Bootstrap para que combine */
+.btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.btn-close-white:hover {
+    opacity: 1;
+    transform: scale(1.1);
 }
