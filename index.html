@@ -10,15 +10,30 @@
 </head>
 <body class="bg-light">
 
-    <nav class="navbar fixed-top glass-nav">
-        <div class="container-fluid justify-content-center">
+<nav class="navbar navbar-expand-md fixed-top glass-nav">
+        <div class="container-fluid px-4">
             <span class="navbar-brand mb-0 h1 elegant-brand">Tu Estudio Fotográfico</span>
+            
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-2 mt-3 mt-md-0 align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link nav-session-btn active" href="#" data-session="otono">Sesión Otoño</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-session-btn" href="#" data-session="bebes">Sesión Bebés</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <header class="text-center autumn-header">
+    <header class="text-center autumn-header" id="mainHeader">
         <h1 class="elegant-title text-white">Julissa Gonzalez</h1>
-        <p class="elegant-subtitle text-white-50">Sesión de Otoño | 2026</p>
+        <p class="elegant-subtitle text-white-50" id="headerSubtitle">Sesión de Otoño | 2026</p>
     </header>
 
 <main class="container gallery-container mb-5">

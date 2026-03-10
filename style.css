@@ -323,3 +323,31 @@ background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #b8b8b8 100%);
     opacity: 1;
     transform: scale(1.1);
 }
+/* --- ENLACES DE LA BARRA DE NAVEGACIÓN (TABS) --- */
+.nav-session-btn {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6e6e73 !important; /* Gris clásico */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 8px 20px !important;
+    border-radius: 20px; /* Bordes redondeados tipo píldora */
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.nav-session-btn:hover {
+    color: #1d1d1f !important;
+    background: rgba(0, 0, 0, 0.04);
+}
+
+/* Estado Activo en el Navbar (El que está seleccionado) */
+.nav-session-btn.active {
+    color: #1d1d1f !important;
+    background: rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+}
+
+/* Evitar bordes feos al hacer clic en móvil */
+.navbar-toggler:focus {
+    box-shadow: none;
+}

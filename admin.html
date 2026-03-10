@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador | Estudio Fotográfico</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Ajustes específicos para el layout del administrador */
+        body { 
+            padding-top: 100px; /* Espacio para el navbar fijo */
+        }
+        
+        .admin-card {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            border: none;
+        }
+
+        /* Estilo Apple para los inputs */
+        .form-control, .form-control:focus {
+            border-radius: 10px;
+            border: 1px solid #d2d2d7;
+            box-shadow: none;
+            padding: 0.75rem 1rem;
+            font-size: 0.95rem;
+        }
+
+        .form-control:focus {
+            border-color: #0071e3; /* Azul clásico de enfoque */
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-admin {
+            background-color: #1d1d1f;
+            color: #fff;
+            border-radius: 20px;
+            padding: 12px 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-admin:hover {
+            background-color: #424245;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar fixed-top glass-nav">
+        <div class="container-fluid justify-content-center">
+            <span class="navbar-brand mb-0 h1 elegant-brand">Panel Administrador</span>
+        </div>
+    </nav>
+
+    <main class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="admin-card">
+                    <h2 class="mb-4" style="font-family: 'Playfair Display', serif; color: #1d1d1f;">Gestionar Sesión Fotográfica</h2>
+                    <p class="text-muted mb-4">Sube los textos y las imágenes. El sistema actualizará automáticamente la galería del cliente.</p>
+                    
+                    <form id="adminForm">
+                        
+                        <h5 class="mb-3 border-bottom pb-2">1. Textos Principales</h5>
+                        <div class="mb-3">
+                            <label for="tituloInput" class="form-label">Título de la Sesión</label>
+                            <input type="text" class="form-control" id="tituloInput" placeholder="Ej: Julissa Gonzalez" required>
+                        </div>
+                        <div class="mb-4">
+                            <label for="descripcionInput" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="descripcionInput" rows="3" placeholder="Escribe el texto que acompañará a la foto destacada..." required></textarea>
+                        </div>
+
+                        <h5 class="mb-3 border-bottom pb-2 mt-5">2. Fotografías</h5>
+                        <div class="mb-3">
+                            <label for="fotoPrincipalInput" class="form-label">Foto Principal (Destacada)</label>
+                            <input class="form-control" type="file" id="fotoPrincipalInput" accept="image/*" required>
+                            <div class="form-text">Esta imagen aparecerá en grande junto al texto.</div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="fotosGaleriaInput" class="form-label">Resto de la Galería</label>
+                            <input class="form-control" type="file" id="fotosGaleriaInput" accept="image/*" multiple required>
+                            <div class="form-text">Puedes seleccionar varias imágenes a la vez manteniendo presionada la tecla Ctrl (en Windows) o Cmd (en Mac).</div>
+                        </div>
+
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-5">
+                            <button type="submit" class="btn btn-admin">Subir a la Base de Datos</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simulamos lo que pasará cuando le des clic a Guardar
+        document.getElementById('adminForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la página se recargue de golpe
+            
+            // Aquí es donde meteremos el código para enviar los archivos y textos 
+            // a nuestro servidor mediante una petición HTTP (fetch).
+            alert('¡Formulario listo! El siguiente paso es conectar esto con la Base de Datos.');
+        });
+    </script>
+</body>
+</html>         
