@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
             headerInfo: {
                 subtitle: "Sesión de Bebés | 2026",
                 // Imagen de fondo del Hero para bebés (tonos más suaves/blancos)
-                bgImage: "https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
+                "./Fotos/Fotob1.jpeg",
+        
+        // El resto irán a la cuadrícula de abajo
+                "./Fotos/fotob2.jpeg",
+                "./Fotos/fotob3.jpeg",
             },
             feature: {
                 titulo: "Dulces Recién Nacidos",
@@ -180,4 +184,5 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowLeft' && prevBtn) prevBtn.click();
         }
     });
+
 });
