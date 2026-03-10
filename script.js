@@ -14,24 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             images: [
 // 1. BASE DE DATOS (Fotos + Texto de la principal)
-    const imageList = [
-        "./Fotos/Foto-(1).jpeg",
-        "./Fotos/Foto-(2).jpeg",
-        "./Fotos/Foto-(3).jpeg",
-        "./Fotos/Foto-(4).jpeg",
-        "./Fotos/Foto-(5).jpeg",
-        "./Fotos/Foto-(6).jpeg",
-        "./Fotos/Foto-(7).jpeg",
-        "./Fotos/Foto-(8).jpeg",
-        "./Fotos/Foto-(9).jpeg",
-        "./Fotos/Foto-(10).jpeg",
-        "./Fotos/Foto-(11).jpeg",
-        "./Fotos/Foto-(12).jpeg",
-        "./Fotos/Foto-(13).jpeg",
-        "./Fotos/Foto-(14).jpeg",
-        "./Fotos/Foto-(15).jpeg",
-        "./Fotos/Foto-(16).jpeg"
-    ];
+        
+                                "./Fotos/Foto-(1).jpeg",
+                                "./Fotos/Foto-(2).jpeg",
+                                "./Fotos/Foto-(3).jpeg",
+                                "./Fotos/Foto-(4).jpeg",
+                                "./Fotos/Foto-(5).jpeg",
+                                "./Fotos/Foto-(6).jpeg",
+                                "./Fotos/Foto-(7).jpeg",
+                                "./Fotos/Foto-(8).jpeg",
+                                "./Fotos/Foto-(9).jpeg",
+                                "./Fotos/Foto-(10).jpeg",
+                                "./Fotos/Foto-(11).jpeg",
+                                "./Fotos/Foto-(12).jpeg",
+                                "./Fotos/Foto-(13).jpeg",
+                                "./Fotos/Foto-(14).jpeg",
+                                "./Fotos/Foto-(15).jpeg",
+                                "./Fotos/Foto-(16).jpeg"
+    
             ]
         },
         bebes: {
@@ -200,4 +200,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
 
