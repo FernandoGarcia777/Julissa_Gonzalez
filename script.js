@@ -13,36 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 descripcion: "Los tonos cálidos y la luz natural del atardecer crean un ambiente nostálgico y hermoso. Mira la galería completa de esta mágica tarde."
             },
             images: [
-// 1. BASE DE DATOS (Fotos + Texto de la principal)
-        
-                                "./Fotos/Foto-(1).jpeg",
-                                "./Fotos/Foto-(2).jpeg",
-                                "./Fotos/Foto-(3).jpeg",
-                                "./Fotos/Foto-(4).jpeg",
-                                "./Fotos/Foto-(5).jpeg",
-                                "./Fotos/Foto-(6).jpeg",
-                                "./Fotos/Foto-(7).jpeg",
-                                "./Fotos/Foto-(8).jpeg",
-                                "./Fotos/Foto-(9).jpeg",
-                                "./Fotos/Foto-(10).jpeg",
-                                "./Fotos/Foto-(11).jpeg",
-                                "./Fotos/Foto-(12).jpeg",
-                                "./Fotos/Foto-(13).jpeg",
-                                "./Fotos/Foto-(14).jpeg",
-                                "./Fotos/Foto-(15).jpeg",
-                                "./Fotos/Foto-(16).jpeg"
-    
+                "https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1516222338250-863216ce01ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1478146896981-b80fe463b330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1509660933844-6910e12765a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                "https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
             ]
         },
         bebes: {
             headerInfo: {
                 subtitle: "Sesión de Bebés | 2026",
                 // Imagen de fondo del Hero para bebés (tonos más suaves/blancos)
-                "./Fotos/Fotob1.jpeg",
-        
-        // El resto irán a la cuadrícula de abajo
-                "./Fotos/fotob2.jpeg",
-                "./Fotos/fotob3.jpeg",
+                bgImage: "https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80"
             },
             feature: {
                 titulo: "Dulces Recién Nacidos",
@@ -198,7 +180,4 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'ArrowLeft' && prevBtn) prevBtn.click();
         }
     });
-
 });
-
-
